@@ -3,11 +3,11 @@ from PIL import Image
 import torch
 from torchvision import models, transforms
 
-# Загрузка предварительно обученной модели DenseNet
+# Load the pretrained DenseNet model
 model = models.densenet121()
 model.eval()
 
-# Преобразование изображения перед передачей его модели
+# Transform the image before passing it to the model
 def transform_image(image):
     # Convert the image to RGB
     image = image.convert("RGB")
@@ -29,24 +29,24 @@ def predict(image):
 def main():
     st.title("DenseNet Image Classification App")
 
-    # Загрузка изображения
-    image_file = st.file_uploader("Выберите изображение", type=["jpg", "jpeg", "png"])
+    # Load an image
+    image_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
     if image_file:
-        # Отображение выбранного изображения
+        # Display the selected image
         image = Image.open(image_file)
-        st.image(image, caption="Выбранное изображение", use_column_width=True)
+        st.image(image, caption="Selected image", use_column_width=True)
 
-        # Обработка и предсказание
-        if st.button("Классифицировать изображение"):
-            # Преобразование изображения
+        # Processing and prediction
+        if st.button("Classify image"):
+            # Transform the image
             image_tensor = transform_image(image)
 
-            # Предсказание с использованием модели
+            # Prediction using the model
             prediction = predict(image_tensor)
 
-            # Отображение результата
-            st.write("Предсказанный класс (согласно индексу класса ImageNet):", prediction)
+            # Display the result
+            st.write("Predicted class (according to ImageNet class index):", prediction)
 
 if __name__ == "__main__":
     main()
