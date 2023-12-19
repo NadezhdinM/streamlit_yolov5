@@ -31,6 +31,13 @@ Notes
 2. The app is configured to resize uploaded images to 224x224 pixels, as required by the model.
 3. Feel free to customize the app or use a different pre-trained model according to your requirements.
 
+Test
+---
+
+1. For start test using the next command:
+   ```bash
+   pytest
+
 Contributors
 ---
 
