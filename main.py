@@ -4,7 +4,7 @@ import torch
 from torchvision import models, transforms
 
 # Загрузка предварительно обученной модели DenseNet
-model = models.densenet121(pretrained=True)
+model = models.densenet121()
 model.eval()
 
 # Преобразование изображения перед передачей его модели
